@@ -60,8 +60,7 @@ app.use((req, res, next) => {
 //setting routes
 app.use('/toughts', toughtsRoutes)
 app.get('/', ToutghtsController.getAll)
-//
-
+    //authRoutes
 app.use('/',authRoutes)
 
 conn.sync().then(() => {

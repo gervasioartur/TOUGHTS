@@ -1,8 +1,11 @@
-const Tought  =  require('../models/Tought')
+const Tought = require('../models/Tought')
 const User = require('../models/User')
 
-module.exports =  class ToutghtController{
-    static async getAll(req,res){
+module.exports = class ToutghtController {
+    static async getAll(req, res) {
         res.render('toughts/home')
+    }
+    static async dashboard(req, res) {
+        res.render('toughts/dashboard')
     }
 }
