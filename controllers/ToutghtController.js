@@ -14,9 +14,6 @@ module.exports = class ToutghtController {
         else
             order = 'DESC'
 
-
-
-
         const toughtsData = await Tought.findAll({
             include: User,
             where: {
