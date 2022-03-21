@@ -1,19 +1,14 @@
 const express = require('express')
+const path =  require('path')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
 const FileStrore = require('session-file-store')(session)
 const flash = require('express-flash')
-const conn = require('./database/conn')
 
 const app = express()
-const port = 3000
-
-//importing models
-const Tought = require('./models/Tought')
-const User = require('./models/User')
 
 //importing controllers
-const ToutghtsController = require('./controllers/ToutghtController')
+const ToutghtsController = require('./app/controllers/ToutghtController')
 
 //importing routes
 const toughtsRoutes = require('./routes/toughtsRoutes')
@@ -23,7 +18,8 @@ const authRoutes = require('./routes/authRoutes')
 //cofiguring handlebars and url encoded
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, '../public/')))
+app.set('views', path.join(__dirname, 'app/views'));
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
@@ -60,9 +56,7 @@ app.use((req, res, next) => {
 //setting routes
 app.use('/toughts', toughtsRoutes)
 app.get('/', ToutghtsController.getAll)
-    //authRoutes
-app.use('/',authRoutes)
+//authRoutes
+app.use('/', authRoutes)
 
-conn.sync().then(() => {
-    app.listen(port)
-}).catch(err => console.log(err))
+module.exports = app
