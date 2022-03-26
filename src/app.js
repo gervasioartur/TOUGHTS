@@ -1,5 +1,5 @@
 const express = require('express')
-const path =  require('path')
+const path = require('path')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
 const FileStrore = require('session-file-store')(session)
@@ -55,7 +55,7 @@ app.use((req, res, next) => {
 
 //setting routes
 app.use('/toughts', toughtsRoutes)
-app.get('/', ToutghtsController.getAll)
+// app.get('/', ToutghtsController.getAll)
 //authRoutes
 app.use('/', authRoutes)
 
