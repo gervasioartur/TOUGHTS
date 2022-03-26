@@ -57,6 +57,6 @@ app.use((req, res, next) => {
 app.use('/toughts', toughtsRoutes)
 app.get('/', ToutghtsController.getAll)
 //authRoutes
-app.use('/auth', authRoutes)
+app.use('/', authRoutes)
 
 module.exports = app
